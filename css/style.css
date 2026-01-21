@@ -41,3 +41,18 @@ body {
         padding: 2rem 1rem;
     }
 }
+
+/* Cursor blink animation */
+.cursor {
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Typed text container */
+.typed-text {
+    display: inline;
+}
