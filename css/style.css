@@ -750,3 +750,231 @@ body {
         margin-left: 3rem;
     }
 }
+
+/* ==========================================
+   MOBILE POLISH - Comprehensive Responsive
+   ========================================== */
+
+/* Tablet and below */
+@media (max-width: 768px) {
+    /* Global adjustments */
+    body {
+        font-size: 14px;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+
+    /* Hero section mobile */
+    .section--hero {
+        padding: 1.5rem 1rem;
+    }
+
+    .hero__terminal {
+        font-size: 0.875rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .ascii__container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .ascii__name {
+        font-size: 2rem;
+        letter-spacing: 2px;
+    }
+
+    .ascii__meta {
+        font-size: 0.9rem;
+        line-height: 1.8;
+    }
+
+    .hero__skip {
+        font-size: 0.7rem;
+        top: 1rem;
+        right: 1rem;
+    }
+
+    .hero__scroll {
+        font-size: 0.75rem;
+        bottom: 1.5rem;
+    }
+
+    /* About section mobile */
+    .terminal-window__body {
+        padding: 1.25rem;
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+
+    /* Experience section mobile */
+    .history__header {
+        font-size: 0.95rem;
+        padding: 0.5rem;
+        gap: 0.75rem;
+    }
+
+    .history__date {
+        min-width: auto;
+        font-size: 0.85rem;
+    }
+
+    .history__company {
+        font-size: 0.95rem;
+    }
+
+    .history__details {
+        padding-left: 1rem;
+    }
+
+    .history__content {
+        padding-left: 1rem;
+    }
+
+    .history__tasks li {
+        font-size: 0.85rem;
+        line-height: 1.6;
+    }
+
+    /* Skills section mobile */
+    .skills__summary {
+        gap: 1rem;
+        font-size: 0.9rem;
+    }
+
+    .skill-group__name {
+        font-size: 1rem;
+    }
+
+    .skill-group__items li {
+        font-size: 0.9rem;
+    }
+
+    /* Certifications mobile */
+    .cert-card {
+        padding: 1.25rem;
+    }
+
+    .cert-card__name {
+        font-size: 1rem;
+    }
+
+    /* Contact section mobile */
+    .contact-terminal {
+        padding: 1.25rem;
+    }
+
+    .contact__header {
+        font-size: 1rem;
+    }
+
+    .contact__text {
+        font-size: 0.9rem;
+    }
+
+    .education__content {
+        font-size: 0.85rem;
+    }
+
+    /* Footer mobile */
+    .footer {
+        padding: 1.5rem 1rem;
+    }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+    body {
+        font-size: 13px;
+    }
+
+    .section {
+        padding: 2rem 0.75rem;
+    }
+
+    /* Hero small screens */
+    .ascii__logo {
+        display: none;
+    }
+
+    .ascii__name {
+        font-size: 1.75rem;
+        letter-spacing: 1px;
+    }
+
+    .ascii__meta {
+        font-size: 0.85rem;
+    }
+
+    .status__role {
+        font-size: 1rem;
+    }
+
+    /* Experience small screens */
+    .history__number {
+        display: none;
+    }
+
+    .history__header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+
+    .history__tasks li {
+        font-size: 0.8rem;
+    }
+
+    /* Skills small screens */
+    .skills__tree {
+        gap: 1.5rem;
+    }
+
+    .skill-group__items {
+        padding-left: 0.5rem;
+    }
+
+    /* Contact small screens */
+    .contact__link {
+        gap: 0.5rem;
+    }
+
+    .contact__icon {
+        width: 1.5rem;
+        font-size: 1rem;
+    }
+
+    .contact__badge {
+        margin-left: 2rem;
+        font-size: 0.75rem;
+    }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .hero__canvas {
+        display: none;
+    }
+
+    .scroll__arrow {
+        animation: none;
+    }
+
+    .loader__bar::after {
+        animation: none;
+        transform: none;
+        width: 60%;
+    }
+}
