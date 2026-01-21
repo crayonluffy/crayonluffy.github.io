@@ -100,16 +100,16 @@ async function runHeroSequence() {
     heroSection.addEventListener('click', skipHeroAnimation, { once: true });
 
     const lines = [
-        { id: 'line-ssh', text: '$ ssh ming@hongkong.cloud', delay: 200 },
-        { id: 'line-connecting', text: 'Connecting...', delay: 300 },
-        { id: 'line-auth', text: 'Authentication successful.', delay: 200 },
-        { id: 'line-neofetch', text: '$ neofetch', delay: 300 }
+        { id: 'line-ssh', text: '$ ssh ming@hongkong.cloud', delay: 100 },
+        { id: 'line-connecting', text: 'Connecting...', delay: 150 },
+        { id: 'line-auth', text: 'Authentication successful.', delay: 100 },
+        { id: 'line-neofetch', text: '$ neofetch', delay: 150 }
     ];
 
     for (const line of lines) {
         if (heroSkipped) break;
         const element = document.getElementById(line.id);
-        const typewriter = new TypeWriter(element, line.text, 15); // Faster: 15ms instead of 30ms
+        const typewriter = new TypeWriter(element, line.text, 10); // Fast: 10ms
         activeTypewriters.push(typewriter);
         await typewriter.type();
         if (!heroSkipped) await sleep(line.delay);
@@ -140,7 +140,7 @@ async function cycleRoles() {
     while (true) {
         roleEl.textContent = '';
         const role = ROLES[currentRoleIndex];
-        const typewriter = new TypeWriter(roleEl, `> ${role}`, 30);
+        const typewriter = new TypeWriter(roleEl, `> ${role}`, 20);
         await typewriter.type();
         addCursor(roleEl);
 
@@ -196,7 +196,7 @@ class ScrollAnimator {
         if (command) {
             const text = command.dataset.command;
             command.textContent = '';
-            const typewriter = new TypeWriter(command, text, 25);
+            const typewriter = new TypeWriter(command, text, 12);
             await typewriter.type();
             addCursor(command);
         }
