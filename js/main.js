@@ -245,6 +245,50 @@ function initExperienceSection() {
     });
 }
 
+// Count-up animation for stats
+function animateCountUp(element, target, duration = 800) {
+    const start = 0;
+    const startTime = performance.now();
+
+    function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easeOut = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(start + (target - start) * easeOut);
+
+        element.textContent = current;
+
+        if (progress < 1) {
+            requestAnimationFrame(update);
+        } else {
+            element.textContent = target;
+        }
+    }
+
+    requestAnimationFrame(update);
+}
+
+// Stats banner observer
+function initStatsBanner() {
+    const statsSection = document.getElementById('stats');
+    if (!statsSection) return;
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.dataset.animated) {
+                entry.target.dataset.animated = 'true';
+                const numbers = entry.target.querySelectorAll('.stat-item__number');
+                numbers.forEach((num, index) => {
+                    const target = parseInt(num.dataset.target, 10);
+                    setTimeout(() => animateCountUp(num, target), index * 100);
+                });
+            }
+        });
+    }, { threshold: 0.5 });
+
+    observer.observe(statsSection);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize scroll animations
     const scrollAnimator = new ScrollAnimator();
@@ -253,6 +297,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize experience section
     initExperienceSection();
+
+    // Initialize stats banner
+    initStatsBanner();
 
     runHeroSequence();
 });
