@@ -253,30 +253,30 @@ body::after {
     justify-content: center;
 }
 
-/* PROMINENT NAME - Subtle glow effect */
+/* PROMINENT NAME - White with subtle cyan glow */
 .ascii__name {
     font-size: 4.5rem;
     font-weight: 700;
-    color: var(--color-primary);
+    color: #fff;
     margin: 0 0 1.5rem 0;
     letter-spacing: 8px;
     text-transform: uppercase;
     position: relative;
     text-shadow:
-        0 0 10px rgba(0, 212, 255, 0.4),
-        0 0 30px rgba(0, 212, 255, 0.2),
-        0 0 50px rgba(0, 212, 255, 0.1);
+        0 0 8px rgba(0, 212, 255, 0.6),
+        0 0 20px rgba(0, 212, 255, 0.4),
+        0 0 40px rgba(0, 212, 255, 0.2);
 }
 
 .ascii__name::after {
     content: '';
     position: absolute;
-    bottom: -8px;
+    bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
-    width: 60%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+    width: 50%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.6), transparent);
 }
 
 .ascii__meta {
