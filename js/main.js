@@ -434,6 +434,28 @@ function initCardTilt() {
     });
 }
 
+// Neon flicker effect on terminal commands
+function initNeonFlicker() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const commands = document.querySelectorAll('.section__command');
+
+    function triggerFlicker() {
+        const randomCommand = commands[Math.floor(Math.random() * commands.length)];
+        if (randomCommand && !randomCommand.classList.contains('neon-flicker')) {
+            randomCommand.classList.add('neon-flicker');
+            setTimeout(() => randomCommand.classList.remove('neon-flicker'), 150);
+        }
+
+        // Schedule next flicker (random 3-8 seconds)
+        const nextFlicker = 3000 + Math.random() * 5000;
+        setTimeout(triggerFlicker, nextFlicker);
+    }
+
+    // Start after initial animations complete
+    setTimeout(triggerFlicker, 5000);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize scroll animations
     const scrollAnimator = new ScrollAnimator();
@@ -453,6 +475,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize parallax effects
     initParallax();
     initCardTilt();
+
+    // Initialize neon flicker
+    initNeonFlicker();
 
     runHeroSequence();
 });

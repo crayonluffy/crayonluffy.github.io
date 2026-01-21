@@ -416,6 +416,29 @@ body::after {
     font-size: 1.2rem;
     font-weight: 500;
     opacity: 0.9;
+    text-shadow: 0 0 5px currentColor;
+}
+
+/* Neon flicker effect for terminal commands */
+.neon-flicker {
+    animation: neonFlicker 0.15s ease;
+}
+
+@keyframes neonFlicker {
+    0%, 100% {
+        opacity: 1;
+        text-shadow: 0 0 5px currentColor, 0 0 10px currentColor;
+    }
+    50% {
+        opacity: 0.8;
+        text-shadow: 0 0 2px currentColor;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .neon-flicker {
+        animation: none;
+    }
 }
 
 .section__content {
