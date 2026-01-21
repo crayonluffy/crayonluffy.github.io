@@ -269,6 +269,26 @@ class NetworkBackground {
     }
 }
 
+// Experience section expand/collapse
+function initExperienceSection() {
+    const items = document.querySelectorAll('.history__item');
+
+    items.forEach(item => {
+        const header = item.querySelector('.history__header');
+        header.addEventListener('click', () => {
+            const isExpanded = item.dataset.expanded === 'true';
+
+            // Collapse all
+            items.forEach(i => i.dataset.expanded = 'false');
+
+            // Expand clicked if it was collapsed
+            if (!isExpanded) {
+                item.dataset.expanded = 'true';
+            }
+        });
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize network background
     const canvas = document.getElementById('network-bg');
@@ -281,6 +301,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const scrollAnimator = new ScrollAnimator();
     const sections = document.querySelectorAll('.section:not(.section--hero)');
     scrollAnimator.observe(sections);
+
+    // Initialize experience section
+    initExperienceSection();
 
     runHeroSequence();
 });
