@@ -158,8 +158,10 @@ class ScrollAnimator {
     constructor() {
         this.observer = new IntersectionObserver(
             (entries) => this.handleIntersect(entries),
-            { threshold: 0.2 }
+            { threshold: 0.5, rootMargin: '-50px 0px' }
         );
+        this.queue = [];
+        this.isAnimating = false;
     }
 
     observe(elements) {
@@ -170,9 +172,23 @@ class ScrollAnimator {
         entries.forEach(entry => {
             if (entry.isIntersecting && !entry.target.dataset.animated) {
                 entry.target.dataset.animated = 'true';
-                this.animateSection(entry.target);
+                this.queue.push(entry.target);
+                this.processQueue();
             }
         });
+    }
+
+    async processQueue() {
+        if (this.isAnimating || this.queue.length === 0) return;
+        this.isAnimating = true;
+
+        while (this.queue.length > 0) {
+            const section = this.queue.shift();
+            await this.animateSection(section);
+            await sleep(200);
+        }
+
+        this.isAnimating = false;
     }
 
     async animateSection(section) {
