@@ -1561,3 +1561,26 @@ body::after {
         padding-bottom: 3rem;
     }
 }
+
+/* Footer keyboard hint */
+.footer__hint {
+    margin-top: 0.75rem;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    opacity: 0.6;
+}
+
+.footer__hint kbd {
+    background: rgba(0, 212, 255, 0.1);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    border-radius: 3px;
+    padding: 0.1em 0.4em;
+    font-family: inherit;
+    font-size: 0.9em;
+}
+
+@media (max-width: 768px) {
+    .footer__hint {
+        display: none;
+    }
+}
