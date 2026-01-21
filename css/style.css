@@ -1235,3 +1235,113 @@ body::after {
         font-size: 1.75rem;
     }
 }
+
+/* Sticky Navigation */
+.sticky-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(10, 10, 15, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+}
+
+.sticky-nav--visible {
+    transform: translateY(0);
+}
+
+.sticky-nav__inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0.75rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sticky-nav__logo {
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: 1.25rem;
+    text-decoration: none;
+}
+
+.sticky-nav__links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.sticky-nav__link {
+    color: var(--color-text-muted);
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: color 0.2s ease;
+    position: relative;
+}
+
+.sticky-nav__link:hover {
+    color: var(--color-text);
+}
+
+.sticky-nav__link--active {
+    color: var(--color-primary);
+}
+
+.sticky-nav__link--active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--color-primary);
+}
+
+.sticky-nav__hint {
+    color: var(--color-text-muted);
+    font-size: 0.75rem;
+    opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+    .sticky-nav__inner {
+        padding: 0.5rem 1rem;
+    }
+
+    .sticky-nav__links {
+        gap: 0.75rem;
+    }
+
+    .sticky-nav__link {
+        font-size: 0.75rem;
+    }
+
+    .sticky-nav__hint {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .sticky-nav__links {
+        gap: 0.5rem;
+    }
+
+    .sticky-nav__link {
+        font-size: 0.7rem;
+    }
+}
+
+/* Navigation flash effect */
+.nav-flash {
+    animation: navFlash 0.5s ease;
+}
+
+@keyframes navFlash {
+    0%, 100% { background: transparent; }
+    50% { background: rgba(0, 212, 255, 0.2); }
+}

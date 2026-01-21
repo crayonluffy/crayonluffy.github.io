@@ -289,6 +289,87 @@ function initStatsBanner() {
     observer.observe(statsSection);
 }
 
+// Sticky navigation
+function initStickyNav() {
+    const nav = document.getElementById('sticky-nav');
+    const hero = document.getElementById('hero');
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.sticky-nav__link');
+
+    // Show/hide nav based on hero visibility
+    const heroObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                nav.classList.remove('sticky-nav--visible');
+            } else {
+                nav.classList.add('sticky-nav--visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    heroObserver.observe(hero);
+
+    // Track active section
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.id;
+                navLinks.forEach(link => {
+                    link.classList.remove('sticky-nav__link--active');
+                    if (link.dataset.section === id) {
+                        link.classList.add('sticky-nav__link--active');
+                    }
+                });
+            }
+        });
+    }, { threshold: 0.3, rootMargin: '-50px 0px -50% 0px' });
+
+    sections.forEach(section => sectionObserver.observe(section));
+
+    // Smooth scroll for nav links
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href').slice(1);
+            const target = document.getElementById(targetId);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+}
+
+// Keyboard navigation
+function initKeyboardNav() {
+    const sectionMap = {
+        'h': 'hero',
+        '1': 'about',
+        '2': 'experience',
+        '3': 'skills',
+        '4': 'certifications',
+        '5': 'contact'
+    };
+
+    document.addEventListener('keydown', (e) => {
+        // Don't trigger if typing in an input
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+        const key = e.key.toLowerCase();
+        if (sectionMap[key]) {
+            const target = document.getElementById(sectionMap[key]);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+                // Flash effect on section
+                const command = target.querySelector('.section__command');
+                if (command) {
+                    command.classList.add('nav-flash');
+                    setTimeout(() => command.classList.remove('nav-flash'), 500);
+                }
+            }
+        }
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize scroll animations
     const scrollAnimator = new ScrollAnimator();
@@ -300,6 +381,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize stats banner
     initStatsBanner();
+
+    // Initialize navigation
+    initStickyNav();
+    initKeyboardNav();
 
     runHeroSequence();
 });
