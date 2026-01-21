@@ -13,17 +13,33 @@
 <body>
     <main>
         <section id="hero" class="section section--hero">
-            <div class="hero__terminal">
-                <div class="terminal__line" id="line-ssh"></div>
-                <div class="terminal__line" id="line-connecting"></div>
-                <div class="terminal__line" id="line-auth"></div>
-                <div class="terminal__line" id="line-neofetch"></div>
+            <div class="hero__content">
+                <div class="hero__terminal">
+                    <div class="terminal__line" id="line-ssh"></div>
+                    <div class="terminal__line" id="line-connecting"></div>
+                    <div class="terminal__line" id="line-auth"></div>
+                    <div class="terminal__line" id="line-neofetch"></div>
+                </div>
+                <div class="hero__ascii" id="ascii-art">
+                    <div class="ascii__container">
+                        <pre class="ascii__logo" id="ascii-logo"></pre>
+                        <div class="ascii__info">
+                            <h1 class="ascii__name">MING TING</h1>
+                            <div class="ascii__meta">
+                                <div><span class="ascii__label">Role:</span> <span class="ascii__value">IT Infrastructure</span></div>
+                                <div><span class="ascii__label">Location:</span> <span class="ascii__value">Hong Kong</span></div>
+                                <div><span class="ascii__label">Certs:</span> <span class="ascii__value">VMware × NetApp × Cloud</span></div>
+                                <div><span class="ascii__label">Status:</span> <span class="ascii__value ascii__value--success">Available</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero__status">
+                    <span class="status__prompt">$ current --status</span>
+                    <div class="status__role" id="role-text"></div>
+                </div>
             </div>
-            <div class="hero__ascii" id="ascii-art"></div>
-            <div class="hero__status">
-                <span class="status__prompt">$ current --status</span>
-                <div class="status__role" id="role-text"></div>
-            </div>
+            <div class="hero__skip">click anywhere to skip</div>
             <div class="hero__scroll">
                 <span>scroll to continue</span>
                 <div class="scroll__arrow">↓</div>

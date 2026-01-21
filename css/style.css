@@ -66,6 +66,15 @@ body {
     min-height: 100vh;
     padding: 2rem;
     position: relative;
+    cursor: pointer;
+}
+
+.hero__content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .hero__canvas {
@@ -78,30 +87,20 @@ body {
     opacity: 0.3;
 }
 
-.hero__terminal,
-.hero__ascii,
-.hero__status,
-.hero__scroll {
-    position: relative;
-    z-index: 1;
-}
-
 .hero__terminal {
     text-align: left;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
 }
 
 .terminal__line {
     margin: 0.25rem 0;
-    min-height: 1.5rem;
+    min-height: 1.4rem;
 }
 
+/* ASCII Art Section - Redesigned */
 .hero__ascii {
-    margin: 2rem 0;
-    text-align: left;
-    font-size: 0.75rem;
-    line-height: 1.2;
-    color: var(--color-primary);
     opacity: 0;
     transition: opacity 0.5s ease;
 }
@@ -110,16 +109,50 @@ body {
     opacity: 1;
 }
 
-.hero__ascii pre {
+.ascii__container {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.ascii__logo {
+    color: var(--color-primary);
+    font-size: 0.7rem;
+    line-height: 1.15;
     margin: 0;
 }
 
-.hero__ascii .ascii__info {
+.ascii__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* PROMINENT NAME - This is the key fix */
+.ascii__name {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 0 0 1rem 0;
+    letter-spacing: 3px;
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+}
+
+.ascii__meta {
+    font-size: 0.875rem;
+    line-height: 1.8;
+}
+
+.ascii__label {
+    color: var(--color-text-muted);
+}
+
+.ascii__value {
     color: var(--color-text);
 }
 
-.hero__ascii .ascii__label {
-    color: var(--color-text-muted);
+.ascii__value--success {
+    color: var(--color-success);
 }
 
 .hero__status {
@@ -131,6 +164,7 @@ body {
     color: var(--color-text-muted);
     display: block;
     margin-bottom: 0.5rem;
+    font-size: 0.875rem;
 }
 
 .status__role {
@@ -139,12 +173,24 @@ body {
     min-height: 2rem;
 }
 
+/* Skip hint */
+.hero__skip {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    color: var(--color-text-muted);
+    font-size: 0.75rem;
+    opacity: 0.6;
+    z-index: 1;
+}
+
 .hero__scroll {
     position: absolute;
     bottom: 2rem;
     text-align: center;
     color: var(--color-text-muted);
     font-size: 0.875rem;
+    z-index: 1;
 }
 
 .scroll__arrow {
@@ -171,12 +217,48 @@ body {
     100% { text-shadow: none; }
 }
 
+/* Mobile Responsiveness for Hero */
 @media (max-width: 768px) {
-    .hero__ascii {
+    .ascii__container {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .ascii__logo {
         font-size: 0.5rem;
+    }
+
+    .ascii__info {
+        text-align: center;
+    }
+
+    .ascii__name {
+        font-size: 1.75rem;
+        letter-spacing: 2px;
+    }
+
+    .ascii__meta {
+        font-size: 0.8rem;
     }
 
     .status__role {
         font-size: 1rem;
+    }
+
+    .hero__skip {
+        top: 1rem;
+        right: 1rem;
+    }
+}
+
+/* Very small screens - hide ASCII logo */
+@media (max-width: 480px) {
+    .ascii__logo {
+        display: none;
+    }
+
+    .ascii__name {
+        font-size: 1.5rem;
     }
 }
