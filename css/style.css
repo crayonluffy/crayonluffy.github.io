@@ -1345,3 +1345,62 @@ body::after {
     0%, 100% { background: transparent; }
     50% { background: rgba(0, 212, 255, 0.2); }
 }
+
+/* Parallax Decorations */
+.parallax-decorations {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 50;
+    overflow: hidden;
+}
+
+.parallax-symbol {
+    position: absolute;
+    font-size: 2rem;
+    color: var(--color-primary);
+    opacity: 0.1;
+    font-weight: 300;
+    transition: transform 0.1s ease-out;
+}
+
+/* Section background alternation */
+.section--about,
+.section--skills,
+.section--contact {
+    background-color: var(--color-bg);
+}
+
+.section--experience,
+.section--certifications {
+    background-color: #0d0d14;
+}
+
+/* Certification card 3D tilt */
+.cert-card {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.cert-card:hover {
+    transform: translateY(-4px) rotateX(2deg) rotateY(-2deg);
+}
+
+@media (max-width: 768px) {
+    .parallax-decorations {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .parallax-decorations {
+        display: none;
+    }
+
+    .cert-card:hover {
+        transform: translateY(-4px);
+    }
+}

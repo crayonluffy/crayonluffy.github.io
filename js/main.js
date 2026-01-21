@@ -370,6 +370,70 @@ function initKeyboardNav() {
     });
 }
 
+// Parallax effects
+function initParallax() {
+    // Check for reduced motion preference
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    // Disable on mobile
+    if (window.innerWidth <= 768) return;
+
+    const symbols = document.querySelectorAll('.parallax-symbol');
+    const heroAscii = document.querySelector('.hero__ascii');
+    let ticking = false;
+
+    function updateParallax() {
+        const scrollY = window.scrollY;
+
+        // Floating symbols parallax
+        symbols.forEach(symbol => {
+            const speed = parseFloat(symbol.dataset.speed) || 1;
+            const yOffset = scrollY * (speed - 1) * 0.5;
+            symbol.style.transform = `translateY(${yOffset}px)`;
+        });
+
+        // Hero content parallax (slower scroll creates depth)
+        if (heroAscii && scrollY < window.innerHeight) {
+            const heroOffset = scrollY * 0.3;
+            heroAscii.style.transform = `translateY(${heroOffset}px)`;
+        }
+
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(updateParallax);
+            ticking = true;
+        }
+    }, { passive: true });
+}
+
+// Certification card tilt effect
+function initCardTilt() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (window.innerWidth <= 768) return;
+
+    const cards = document.querySelectorAll('.cert-card');
+
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = (y - centerY) / centerY * -5;
+            const rotateY = (x - centerX) / centerX * 5;
+
+            card.style.transform = `translateY(-4px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = '';
+        });
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize scroll animations
     const scrollAnimator = new ScrollAnimator();
@@ -385,6 +449,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize navigation
     initStickyNav();
     initKeyboardNav();
+
+    // Initialize parallax effects
+    initParallax();
+    initCardTilt();
 
     runHeroSequence();
 });
