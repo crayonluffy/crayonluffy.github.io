@@ -287,3 +287,58 @@ body {
     margin: 0 auto;
     width: 100%;
 }
+
+/* Terminal window component */
+.terminal-window {
+    background: var(--color-bg-light);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.terminal-window__header {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0.75rem 1rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.terminal-window__dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.terminal-window__dot--red { background: #ff5f56; }
+.terminal-window__dot--yellow { background: #ffbd2e; }
+.terminal-window__dot--green { background: #27ca40; }
+
+.terminal-window__body {
+    padding: 2rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.terminal-window__body p {
+    margin-bottom: 1.25rem;
+}
+
+.terminal-window__body p:last-child {
+    margin-bottom: 0;
+}
+
+.prompt {
+    color: var(--color-text-muted);
+    margin-right: 0.5rem;
+}
+
+.highlight {
+    color: var(--color-primary);
+}
+
+/* About section specifics */
+.section--about {
+    display: flex;
+    align-items: center;
+    min-height: 60vh;
+}
