@@ -53,9 +53,9 @@ const ASCII_LOGO = `    __  _______
 /_/  /_/ /_/`;
 
 const ROLES = [
-    'System Specialist',
+    'Systems Specialist',
     'Solutions Consultant',
-    'Infrastructure Expert'
+    'Infrastructure Architect'
 ];
 
 let heroSkipped = false;

@@ -610,3 +610,143 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+/* Contact section */
+.contact-terminal {
+    background: var(--color-bg-light);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.contact__header {
+    color: var(--color-primary);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.contact__divider {
+    color: var(--color-text-muted);
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+.contact__links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.contact__link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--color-text);
+    text-decoration: none;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.contact__link:hover {
+    background: rgba(0, 212, 255, 0.1);
+}
+
+.contact__link--static {
+    cursor: default;
+}
+
+.contact__link--static:hover {
+    background: transparent;
+}
+
+.contact__icon {
+    font-size: 1.25rem;
+    width: 2rem;
+    text-align: center;
+}
+
+.contact__text {
+    flex: 1;
+}
+
+.contact__badge {
+    color: var(--color-primary);
+    font-size: 0.875rem;
+}
+
+.contact__loader {
+    margin-top: 1rem;
+}
+
+.loader__bar {
+    height: 4px;
+    background: var(--color-bg);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.loader__bar::after {
+    content: '';
+    display: block;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-success));
+    animation: loading 2s ease-in-out infinite;
+}
+
+@keyframes loading {
+    0% { transform: translateX(-100%); }
+    50% { transform: translateX(30%); }
+    100% { transform: translateX(-100%); }
+}
+
+.loader__text {
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+}
+
+/* Education */
+.education {
+    margin-top: 2rem;
+}
+
+.education__command {
+    color: var(--color-text-muted);
+    margin-bottom: 0.75rem;
+}
+
+.education__content {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+}
+
+.education__content p {
+    margin-bottom: 0.5rem;
+}
+
+/* Footer */
+.footer {
+    padding: 2rem;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer p {
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+}
+
+@media (max-width: 768px) {
+    .contact__link {
+        flex-wrap: wrap;
+    }
+
+    .contact__badge {
+        width: 100%;
+        margin-left: 3rem;
+    }
+}
