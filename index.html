@@ -12,7 +12,24 @@
 </head>
 <body>
     <main>
-        <section id="hero" class="section section--hero"></section>
+        <section id="hero" class="section section--hero">
+            <div class="hero__terminal">
+                <div class="terminal__line" id="line-ssh"></div>
+                <div class="terminal__line" id="line-connecting"></div>
+                <div class="terminal__line" id="line-auth"></div>
+                <div class="terminal__line" id="line-neofetch"></div>
+            </div>
+            <div class="hero__ascii" id="ascii-art"></div>
+            <div class="hero__status">
+                <span class="status__prompt">$ current --status</span>
+                <div class="status__role" id="role-text"></div>
+            </div>
+            <div class="hero__scroll">
+                <span>scroll to continue</span>
+                <div class="scroll__arrow">↓</div>
+            </div>
+            <canvas id="network-bg" class="hero__canvas"></canvas>
+        </section>
         <section id="about" class="section section--about"></section>
         <section id="experience" class="section section--experience"></section>
         <section id="skills" class="section section--skills"></section>
