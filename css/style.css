@@ -1,0 +1,43 @@
+/* css/style.css */
+:root {
+    --color-bg: #0a0a0f;
+    --color-bg-light: #12121a;
+    --color-primary: #00d4ff;
+    --color-text: #e0e0e0;
+    --color-text-muted: #6b7280;
+    --color-success: #22c55e;
+    --color-warning: #f59e0b;
+    --font-mono: 'JetBrains Mono', monospace;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-mono);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.section {
+    min-height: 100vh;
+    padding: 4rem 2rem;
+    position: relative;
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: 2rem 1rem;
+    }
+}
