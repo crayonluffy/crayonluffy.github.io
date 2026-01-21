@@ -1487,3 +1487,77 @@ body::after {
         transform: translateY(-4px);
     }
 }
+
+/* Enhanced Visual Hierarchy */
+
+/* Section command underline */
+.section__command {
+    position: relative;
+    padding-bottom: 0.75rem;
+}
+
+.section__command::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 150px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-primary), transparent);
+}
+
+/* Current role badge */
+.badge {
+    display: inline-block;
+    padding: 0.15em 0.5em;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    border-radius: 4px;
+    vertical-align: middle;
+    margin-left: 0.75rem;
+}
+
+.badge--current {
+    background: rgba(34, 197, 94, 0.2);
+    color: var(--color-success);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+/* Enhanced experience section */
+.history__content {
+    border-left: 2px solid rgba(0, 212, 255, 0.2);
+    margin-left: 0.5rem;
+}
+
+/* Key info highlight pills */
+.highlight {
+    background: rgba(0, 212, 255, 0.1);
+    padding: 0.1em 0.3em;
+    border-radius: 3px;
+}
+
+/* Increased section spacing */
+.section:not(.section--hero):not(.section--stats) {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+/* Company name emphasis */
+.history__company {
+    font-size: 1.1em;
+}
+
+@media (max-width: 768px) {
+    .badge {
+        display: block;
+        margin-left: 0;
+        margin-top: 0.25rem;
+        width: fit-content;
+    }
+
+    .section:not(.section--hero):not(.section--stats) {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+}
