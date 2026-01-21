@@ -253,80 +253,19 @@ body::after {
     justify-content: center;
 }
 
-/* PROMINENT NAME - Hong Kong Neon Sign Effect (Cyan) */
+/* PROMINENT NAME - Subtle glow effect */
 .ascii__name {
     font-size: 4.5rem;
     font-weight: 700;
-    color: #fff;
+    color: var(--color-primary);
     margin: 0 0 1.5rem 0;
     letter-spacing: 8px;
     text-transform: uppercase;
     position: relative;
-    /* Neon glow - cyan to match site theme */
     text-shadow:
-        0 0 5px #fff,
-        0 0 10px #fff,
-        0 0 20px var(--color-neon-blue),
-        0 0 40px var(--color-neon-blue),
-        0 0 60px var(--color-neon-blue),
-        0 0 80px var(--color-neon-blue),
-        0 0 100px var(--color-neon-blue);
-    animation: neonFlicker 4s ease-in-out infinite;
-}
-
-@keyframes neonFlicker {
-    0%, 100% {
-        text-shadow:
-            0 0 5px #fff,
-            0 0 10px #fff,
-            0 0 20px var(--color-neon-blue),
-            0 0 40px var(--color-neon-blue),
-            0 0 60px var(--color-neon-blue),
-            0 0 80px var(--color-neon-blue);
-        opacity: 1;
-    }
-    92% {
-        text-shadow:
-            0 0 5px #fff,
-            0 0 10px #fff,
-            0 0 20px var(--color-neon-blue),
-            0 0 40px var(--color-neon-blue),
-            0 0 60px var(--color-neon-blue),
-            0 0 80px var(--color-neon-blue);
-        opacity: 1;
-    }
-    93% {
-        text-shadow:
-            0 0 2px #fff,
-            0 0 5px var(--color-neon-blue),
-            0 0 10px var(--color-neon-blue);
-        opacity: 0.85;
-    }
-    94% {
-        text-shadow:
-            0 0 5px #fff,
-            0 0 10px #fff,
-            0 0 20px var(--color-neon-blue),
-            0 0 40px var(--color-neon-blue),
-            0 0 60px var(--color-neon-blue);
-        opacity: 1;
-    }
-    96% {
-        text-shadow:
-            0 0 2px #fff,
-            0 0 8px var(--color-neon-blue);
-        opacity: 0.9;
-    }
-    97% {
-        text-shadow:
-            0 0 5px #fff,
-            0 0 10px #fff,
-            0 0 20px var(--color-neon-blue),
-            0 0 40px var(--color-neon-blue),
-            0 0 60px var(--color-neon-blue),
-            0 0 80px var(--color-neon-blue);
-        opacity: 1;
-    }
+        0 0 10px rgba(0, 212, 255, 0.4),
+        0 0 30px rgba(0, 212, 255, 0.2),
+        0 0 50px rgba(0, 212, 255, 0.1);
 }
 
 .ascii__name::after {
@@ -335,14 +274,9 @@ body::after {
     bottom: -8px;
     left: 50%;
     transform: translateX(-50%);
-    width: 80%;
-    height: 3px;
-    background: var(--color-neon-blue);
-    box-shadow:
-        0 0 10px var(--color-neon-blue),
-        0 0 20px var(--color-neon-blue),
-        0 0 40px var(--color-neon-blue);
-    animation: neonFlicker 4s ease-in-out infinite;
+    width: 60%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
 }
 
 .ascii__meta {
@@ -443,17 +377,10 @@ body::after {
     .ascii__name {
         font-size: 2.5rem;
         letter-spacing: 4px;
-        text-shadow:
-            0 0 5px #fff,
-            0 0 10px #fff,
-            0 0 15px var(--color-neon-blue),
-            0 0 30px var(--color-neon-blue),
-            0 0 45px var(--color-neon-blue);
     }
 
     .ascii__name::after {
         bottom: -4px;
-        height: 2px;
     }
 
     .ascii__meta {
@@ -479,11 +406,6 @@ body::after {
     .ascii__name {
         font-size: 2rem;
         letter-spacing: 3px;
-        text-shadow:
-            0 0 5px #fff,
-            0 0 10px var(--color-neon-blue),
-            0 0 20px var(--color-neon-blue),
-            0 0 30px var(--color-neon-blue);
     }
 }
 
@@ -743,6 +665,7 @@ body::after {
     padding: 0.35rem 0;
     transition: color 0.2s ease;
     font-size: 1rem;
+    white-space: nowrap;
 }
 
 .skill-group__items li:hover {
@@ -1033,12 +956,6 @@ body::after {
     .ascii__name {
         font-size: 2.5rem;
         letter-spacing: 4px;
-        text-shadow:
-            0 0 5px #fff,
-            0 0 10px #fff,
-            0 0 15px var(--color-neon-blue),
-            0 0 30px var(--color-neon-blue),
-            0 0 45px var(--color-neon-blue);
     }
 
     .ascii__meta {
@@ -1157,11 +1074,6 @@ body::after {
     .ascii__name {
         font-size: 2rem;
         letter-spacing: 3px;
-        text-shadow:
-            0 0 5px #fff,
-            0 0 10px var(--color-neon-blue),
-            0 0 20px var(--color-neon-blue),
-            0 0 30px var(--color-neon-blue);
     }
 
     .ascii__meta {
