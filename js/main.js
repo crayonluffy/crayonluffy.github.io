@@ -238,15 +238,9 @@ function initExperienceSection() {
     items.forEach(item => {
         const header = item.querySelector('.history__header');
         header.addEventListener('click', () => {
+            // Toggle individual item
             const isExpanded = item.dataset.expanded === 'true';
-
-            // Collapse all
-            items.forEach(i => i.dataset.expanded = 'false');
-
-            // Expand clicked if it was collapsed
-            if (!isExpanded) {
-                item.dataset.expanded = 'true';
-            }
+            item.dataset.expanded = isExpanded ? 'false' : 'true';
         });
     });
 }
