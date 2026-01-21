@@ -484,6 +484,80 @@ function initNeonFlicker() {
     setTimeout(triggerFlicker, 5000);
 }
 
+// Matrix rain effect
+function initMatrixRain() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const canvas = document.getElementById('matrix-rain');
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    let animationId;
+    let isVisible = true;
+
+    const chars = '01アイウエオカキクケコサシスセソ';
+    const fontSize = 14;
+    let columns;
+    let drops;
+
+    function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        columns = Math.floor(canvas.width / (fontSize * 3)); // Sparse columns
+        drops = Array(columns).fill(1);
+    }
+
+    function draw() {
+        if (!isVisible) return;
+
+        ctx.fillStyle = 'rgba(10, 10, 15, 0.1)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = '#00d4ff';
+        ctx.font = `${fontSize}px monospace`;
+
+        for (let i = 0; i < drops.length; i++) {
+            const char = chars[Math.floor(Math.random() * chars.length)];
+            const x = i * fontSize * 3; // Sparse spacing
+            const y = drops[i] * fontSize;
+
+            ctx.fillText(char, x, y);
+
+            if (y > canvas.height && Math.random() > 0.98) {
+                drops[i] = 0;
+            }
+            drops[i]++;
+        }
+
+        animationId = requestAnimationFrame(draw);
+    }
+
+    // Only run when hero is visible
+    const heroObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                isVisible = true;
+                if (!animationId) draw();
+            } else {
+                isVisible = false;
+                if (animationId) {
+                    cancelAnimationFrame(animationId);
+                    animationId = null;
+                }
+            }
+        });
+    }, { threshold: 0.1 });
+
+    const hero = document.getElementById('hero');
+    if (hero) {
+        heroObserver.observe(hero);
+    }
+
+    resize();
+    window.addEventListener('resize', resize);
+    draw();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize scroll animations
     const scrollAnimator = new ScrollAnimator();
@@ -509,6 +583,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize holographic shimmer
     initHolographicShimmer();
+
+    // Initialize matrix rain
+    initMatrixRain();
 
     runHeroSequence();
 });
