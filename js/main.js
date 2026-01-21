@@ -191,6 +191,12 @@ class ScrollAnimator {
             await sleep(300);
             content.classList.add('visible');
         }
+
+        // Trigger certification verification if this is cert section
+        if (section.classList.contains('section--certifications')) {
+            await sleep(500);
+            verifyCertifications();
+        }
     }
 }
 
@@ -267,6 +273,21 @@ class NetworkBackground {
 
         requestAnimationFrame(() => this.animate());
     }
+}
+
+// Certification verification animation
+function verifyCertifications() {
+    const cards = document.querySelectorAll('.cert-card');
+
+    cards.forEach((card, index) => {
+        setTimeout(() => {
+            card.dataset.verified = 'true';
+            const check = card.querySelector('.cert-card__check');
+            const label = card.querySelector('.cert-card__label');
+            check.textContent = '✓';
+            label.textContent = 'VERIFIED';
+        }, 300 + (index * 400));
+    });
 }
 
 // Experience section expand/collapse
