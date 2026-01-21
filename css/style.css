@@ -262,10 +262,52 @@ body::after {
     letter-spacing: 8px;
     text-transform: uppercase;
     position: relative;
+    background: linear-gradient(
+        90deg,
+        #fff 0%,
+        #fff 40%,
+        var(--color-primary) 50%,
+        #fff 60%,
+        #fff 100%
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+}
+
+.ascii__name.shimmer {
+    animation: holographicShimmer 0.8s ease forwards;
+}
+
+@keyframes holographicShimmer {
+    0% {
+        background-position: 100% 0;
+    }
+    100% {
+        background-position: -100% 0;
+    }
+}
+
+/* Keep the glow effect with a pseudo-element */
+.ascii__name::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    color: #fff;
     text-shadow:
         0 0 8px rgba(0, 212, 255, 0.6),
         0 0 20px rgba(0, 212, 255, 0.4),
         0 0 40px rgba(0, 212, 255, 0.2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ascii__name.shimmer {
+        animation: none;
+    }
 }
 
 .ascii__name::after {

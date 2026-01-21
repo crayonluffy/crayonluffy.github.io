@@ -434,6 +434,34 @@ function initCardTilt() {
     });
 }
 
+// Holographic shimmer on name
+function initHolographicShimmer() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const name = document.querySelector('.ascii__name');
+    if (!name) return;
+
+    // Trigger on hover
+    name.addEventListener('mouseenter', () => {
+        if (!name.classList.contains('shimmer')) {
+            name.classList.add('shimmer');
+            setTimeout(() => name.classList.remove('shimmer'), 800);
+        }
+    });
+
+    // Auto-trigger every 10 seconds
+    function autoShimmer() {
+        if (!name.classList.contains('shimmer')) {
+            name.classList.add('shimmer');
+            setTimeout(() => name.classList.remove('shimmer'), 800);
+        }
+        setTimeout(autoShimmer, 10000);
+    }
+
+    // Start after hero animation completes
+    setTimeout(autoShimmer, 8000);
+}
+
 // Neon flicker effect on terminal commands
 function initNeonFlicker() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -478,6 +506,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize neon flicker
     initNeonFlicker();
+
+    // Initialize holographic shimmer
+    initHolographicShimmer();
 
     runHeroSequence();
 });
