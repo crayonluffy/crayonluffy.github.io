@@ -153,6 +153,47 @@ async function cycleRoles() {
     }
 }
 
+// Scroll-triggered animations
+class ScrollAnimator {
+    constructor() {
+        this.observer = new IntersectionObserver(
+            (entries) => this.handleIntersect(entries),
+            { threshold: 0.2 }
+        );
+    }
+
+    observe(elements) {
+        elements.forEach(el => this.observer.observe(el));
+    }
+
+    handleIntersect(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !entry.target.dataset.animated) {
+                entry.target.dataset.animated = 'true';
+                this.animateSection(entry.target);
+            }
+        });
+    }
+
+    async animateSection(section) {
+        const command = section.querySelector('.section__command');
+        if (command) {
+            const text = command.dataset.command;
+            command.textContent = '';
+            const typewriter = new TypeWriter(command, text, 25);
+            await typewriter.type();
+            addCursor(command);
+        }
+
+        // Reveal content after command types
+        const content = section.querySelector('.section__content');
+        if (content) {
+            await sleep(300);
+            content.classList.add('visible');
+        }
+    }
+}
+
 // Network background animation
 class NetworkBackground {
     constructor(canvas) {
@@ -235,6 +276,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const network = new NetworkBackground(canvas);
         network.animate();
     }
+
+    // Initialize scroll animations
+    const scrollAnimator = new ScrollAnimator();
+    const sections = document.querySelectorAll('.section:not(.section--hero)');
+    scrollAnimator.observe(sections);
 
     runHeroSequence();
 });

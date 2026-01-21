@@ -262,3 +262,28 @@ body {
         font-size: 1.5rem;
     }
 }
+
+/* Section animations */
+.section__command {
+    color: var(--color-text-muted);
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.section__content {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.section__content.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Container styling */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+}
