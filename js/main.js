@@ -379,6 +379,7 @@ function initParallax() {
 
     const symbols = document.querySelectorAll('.parallax-symbol');
     const heroContent = document.querySelector('.hero__content');
+    const heroScroll = document.querySelector('.hero__scroll');
     let ticking = false;
 
     function updateParallax() {
@@ -395,6 +396,17 @@ function initParallax() {
         if (heroContent && scrollY < window.innerHeight) {
             const heroOffset = scrollY * 0.3;
             heroContent.style.transform = `translateY(${heroOffset}px)`;
+        }
+
+        // Hide scroll hint when scrolling to prevent overlap
+        if (heroScroll) {
+            if (scrollY > 100) {
+                heroScroll.style.opacity = '0';
+                heroScroll.style.pointerEvents = 'none';
+            } else {
+                heroScroll.style.opacity = '1';
+                heroScroll.style.pointerEvents = 'auto';
+            }
         }
 
         ticking = false;
