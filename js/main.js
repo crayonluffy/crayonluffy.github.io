@@ -378,7 +378,7 @@ function initParallax() {
     if (window.innerWidth <= 768) return;
 
     const symbols = document.querySelectorAll('.parallax-symbol');
-    const heroAscii = document.querySelector('.hero__ascii');
+    const heroContent = document.querySelector('.hero__content');
     let ticking = false;
 
     function updateParallax() {
@@ -392,9 +392,9 @@ function initParallax() {
         });
 
         // Hero content parallax (slower scroll creates depth)
-        if (heroAscii && scrollY < window.innerHeight) {
+        if (heroContent && scrollY < window.innerHeight) {
             const heroOffset = scrollY * 0.3;
-            heroAscii.style.transform = `translateY(${heroOffset}px)`;
+            heroContent.style.transform = `translateY(${heroOffset}px)`;
         }
 
         ticking = false;
